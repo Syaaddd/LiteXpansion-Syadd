@@ -14,12 +14,12 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class GlowEnchant extends Enchantment {
+public abstract class GlowEnchant extends Enchantment {
 
     private final Set<String> ids = new HashSet<>();
 
     public GlowEnchant(@Nonnull NamespacedKey key, @Nonnull String[] applicableItems) {
-        super(key);
+        super();
         ids.addAll(Arrays.asList(applicableItems));
     }
 

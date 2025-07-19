@@ -554,21 +554,24 @@ public final class Items {
     private static final Enchantment glowEnchant = Enchantment.getByKey(Constants.GLOW_ENCHANT);
 
     static {
-        ADVANCED_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 1);
-        CARBONADO_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 2);
-        ENERGIZED_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 3);
-        ADVANCEDLX_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
-        HYBRID_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
-        ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 6);
-        ADVANCED_CIRCUIT.addEnchantment(glowEnchant, 1);
-        GLASS_CUTTER.addEnchantment(glowEnchant, 1);
+        ADVANCED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 1);
+        CARBONADO_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 2);
+        ENERGIZED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 3);
+        ADVANCEDLX_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 4);
+        HYBRID_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 5);
+        ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 6);
 
-        DIAMOND_DRILL.addEnchantment(glowEnchant, 1);
-        LAPOTRON_CRYSTAL.addEnchantment(glowEnchant, 1);
-        ADVANCEDLX_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
-        HYBRID_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
-        ULTIMATE_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
+        if (glowEnchant != null) {
+            ADVANCED_CIRCUIT.addEnchantment(glowEnchant, 1);
+            GLASS_CUTTER.addEnchantment(glowEnchant, 1);
+            DIAMOND_DRILL.addEnchantment(glowEnchant, 1);
+            LAPOTRON_CRYSTAL.addEnchantment(glowEnchant, 1);
+            ADVANCEDLX_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
+            HYBRID_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
+            ULTIMATE_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
+        }
     }
+
 
     private Items() {}
 }

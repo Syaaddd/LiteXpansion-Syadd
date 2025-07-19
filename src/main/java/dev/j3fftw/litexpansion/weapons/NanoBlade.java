@@ -47,7 +47,7 @@ public class NanoBlade extends SimpleSlimefunItem<ItemUseHandler> implements Rec
     public ItemUseHandler getItemHandler() {
         return event -> {
             final ItemMeta nanoBladeMeta = event.getItem().getItemMeta();
-            final Enchantment enchantment = Enchantment.getByKey(Constants.GLOW_ENCHANT);
+            final Enchantment enchantment = Enchantment.UNBREAKING;  // pake unbreaking
             boolean enabled = !nanoBladeMeta.removeEnchant(enchantment);
 
             int damage;
@@ -90,6 +90,13 @@ public class NanoBlade extends SimpleSlimefunItem<ItemUseHandler> implements Rec
     public boolean isEnabled(@Nonnull ItemMeta meta) {
         final Optional<Boolean> opt = Utils.getOptionalBoolean(meta, Constants.NANO_BLADE_ENABLED);
 
-        return (opt.isPresent() && opt.get()) || meta.hasEnchant(Enchantment.getByKey(Constants.GLOW_ENCHANT));
+        if (opt.isPresent() && opt.get()) {
+            return true;
+        }
+
+        // Ganti glow enchantment dengan Unbreaking
+        Enchantment unbreaking = Enchantment.UNBREAKING;
+        return unbreaking != null && meta.hasEnchant(unbreaking);
     }
+
 }
