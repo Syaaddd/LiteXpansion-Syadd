@@ -76,9 +76,9 @@ public class Events implements Listener {
         if (e.getEntity() instanceof Player player && player.getEquipment() != null) {
             final ItemStack chestplate = player.getEquipment().getChestplate();
             if (e.getFinalDamage() > 0
-                && chestplate != null
-                && electricChestplate.isItem(chestplate)
-                && electricChestplate.removeItemCharge(chestplate, Math.max(1, (float) e.getFinalDamage()) * 20)
+                    && chestplate != null
+                    && electricChestplate.isItem(chestplate)
+                    && electricChestplate.removeItemCharge(chestplate, (float) (Math.max(1, (float) e.getFinalDamage()) * 20 * (1 + e.getFinalDamage() * 0.5f)))
             ) {
                 final ItemMeta meta = chestplate.getItemMeta();
                 final float newCharge = ChargeUtils.getCharge(meta);
@@ -87,10 +87,10 @@ public class Events implements Listener {
 
                 final ComponentBuilder builder = new ComponentBuilder();
                 builder
-                    .append("Electric Chestplate").color(ChatColor.BLUE)
-                    .append(" absorbed damage - Charge left: ").color(ChatColor.GRAY)
-                    .append(String.valueOf(electricChestplate.getItemCharge(chestplate))).color(ChatColor.YELLOW)
-                    .append(" J");
+                        .append("Electric Chestplate").color(ChatColor.BLUE)
+                        .append(" absorbed damage - Charge left: ").color(ChatColor.GRAY)
+                        .append(String.valueOf(electricChestplate.getItemCharge(chestplate))).color(ChatColor.YELLOW)
+                        .append(" J");
 
                 if (meta instanceof Damageable damageable) {
                     final double chargePercent = (newCharge / electricChestplate.getMaxItemCharge(chestplate)) * 100;
@@ -104,7 +104,6 @@ public class Events implements Listener {
             }
         }
     }
-
     /**
      * Checks if the player's hunger level changes
      * and has a {@link FoodSynthesizer} to be immune to it
