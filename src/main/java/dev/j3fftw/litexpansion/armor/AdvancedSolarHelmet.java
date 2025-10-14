@@ -37,34 +37,34 @@ public class AdvancedSolarHelmet extends SolarHelmet {
 
         ADVANCED(Items.ADVANCED_SOLAR_HELMET, 5, new ItemStack[] {
             null, SlimefunItems.SOLAR_GENERATOR, null,
-            Items.IRON_PLATE, SlimefunItems.SOLAR_HELMET, Items.IRON_PLATE,
-            Items.IRON_PLATE, null, Items.IRON_PLATE
+            Items.IRON_PLATE.clone(), SlimefunItems.SOLAR_HELMET, Items.IRON_PLATE.clone(),
+            Items.IRON_PLATE.clone(), null, Items.IRON_PLATE.clone()
         }),
 
         CARBONADO(Items.CARBONADO_SOLAR_HELMET, 10, new ItemStack[] {
             null, SlimefunItems.SOLAR_GENERATOR_2, null,
-            Items.COPPER_PLATE, Items.ADVANCED_SOLAR_HELMET, Items.COPPER_PLATE,
-            Items.COPPER_PLATE, null, Items.COPPER_PLATE
+            Items.COPPER_PLATE.clone(), Items.ADVANCED_SOLAR_HELMET, Items.COPPER_PLATE.clone(),
+            Items.COPPER_PLATE.clone(), null, Items.COPPER_PLATE.clone()
         }),
         ENERGIZED(Items.ENERGIZED_SOLAR_HELMET, 20, new ItemStack[] {
             null, SlimefunItems.SOLAR_GENERATOR_3, null,
-            Items.GOLD_PLATE, Items.CARBONADO_SOLAR_HELMET, Items.GOLD_PLATE,
-            Items.GOLD_PLATE, null, Items.GOLD_PLATE
+            Items.GOLD_PLATE.clone(), Items.CARBONADO_SOLAR_HELMET, Items.GOLD_PLATE.clone(),
+            Items.GOLD_PLATE.clone(), null, Items.GOLD_PLATE.clone()
         }),
         ADVANCEDLX(Items.ADVANCEDLX_SOLAR_HELMET, 50, new ItemStack[] {
             null, SlimefunItems.SOLAR_GENERATOR_4, null,
-            Items.DIAMOND_PLATE, Items.ENERGIZED_SOLAR_HELMET, Items.DIAMOND_PLATE,
-            Items.DIAMOND_PLATE, null, Items.DIAMOND_PLATE
+            Items.DIAMOND_PLATE.clone(), Items.ENERGIZED_SOLAR_HELMET, Items.DIAMOND_PLATE.clone(),
+            Items.DIAMOND_PLATE.clone(), null, Items.DIAMOND_PLATE.clone()
         }),
         HYBRID(Items.HYBRID_SOLAR_HELMET, 100, new ItemStack[] {
             null, Items.ADVANCED_SOLAR_PANEL, null,
-            Items.THORIUM_PLATE, Items.ADVANCEDLX_SOLAR_HELMET, Items.THORIUM_PLATE,
-            Items.THORIUM_PLATE, null, Items.THORIUM_PLATE
+            Items.THORIUM_PLATE.clone(), Items.ADVANCEDLX_SOLAR_HELMET, Items.THORIUM_PLATE.clone(),
+            Items.THORIUM_PLATE.clone(), null, Items.THORIUM_PLATE.clone()
         }),
         ULTIMATE(Items.ULTIMATE_SOLAR_HELMET, 250, new ItemStack[] {
             null, Items.ULTIMATE_SOLAR_PANEL, null,
-            Items.IRIDIUM_PLATE, Items.HYBRID_SOLAR_HELMET, Items.IRIDIUM_PLATE,
-            Items.IRIDIUM_PLATE, null, Items.IRIDIUM_PLATE
+            Items.IRIDIUM_PLATE.clone(), Items.HYBRID_SOLAR_HELMET, Items.IRIDIUM_PLATE.clone(),
+            Items.IRIDIUM_PLATE.clone(), null, Items.IRIDIUM_PLATE.clone()
         });
 
 

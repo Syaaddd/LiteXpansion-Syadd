@@ -29,11 +29,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.20.6-R0.1-SNAPSHOT</version>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Updated Slimefun4 version for 1.20.6 compatibility -->
+        <!-- 
+             Updated Slimefun4 version for 1.21 compatibility
+             IMPORTANT: Use a version that supports Minecraft 1.21
+             Check Slimefun repository for latest compatible version -->
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>

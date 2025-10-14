@@ -20,8 +20,8 @@ public class Converter extends AContainer implements PoweredMachine {
         super(Items.LITEXPANSION, Items.CONVERTER, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 new ItemStack(Material.REDSTONE), new ItemStack(Material.REDSTONE), new ItemStack(Material.REDSTONE),
-                new ItemStack(Material.COBBLESTONE), Items.ADVANCED_MACHINE_BLOCK, new ItemStack(Material.COBBLESTONE),
-                null, Items.ADVANCED_CIRCUIT, null
+                new ItemStack(Material.COBBLESTONE), Items.ADVANCED_MACHINE_BLOCK.clone(), new ItemStack(Material.COBBLESTONE),
+                null, Items.ADVANCED_CIRCUIT.clone(), null
             });
     }
 

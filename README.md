@@ -41,3 +41,14 @@ If you encounter issues, visit the **[Slimefun Wiki](https://github.com/Slimefun
 
 To **add, remove, or change UU-Matter recipes**, edit the file:
 
+### Minecraft Version Support
+
+LiteXpansion is compatible with Minecraft version 1.21.*. 
+
+**Supported Versions:** Minecraft 1.21.x
+**Required Dependencies:** Slimefun4 (RC-40 or newer recommended for full 1.21 compatibility)
+
+**Note:** For best compatibility with Minecraft 1.21, please ensure you are using a recent build of Slimefun4 that supports this Minecraft version.
+
+**Important:** If you encounter `VerifyError` related to `SlimefunItemStack` and `ItemStack` type issues, please see `MIGRATION_1_21.md` for details about required code changes and dependency updates.
+

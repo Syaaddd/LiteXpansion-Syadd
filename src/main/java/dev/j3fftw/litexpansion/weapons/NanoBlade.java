@@ -30,9 +30,9 @@ public class NanoBlade extends SimpleSlimefunItem<ItemUseHandler> implements Rec
 
     public NanoBlade() {
         super(Items.LITEXPANSION, Items.NANO_BLADE, MetalForge.RECIPE_TYPE, new ItemStack[] {
-                new ItemStack(Material.GLOWSTONE_DUST), Items.ADVANCED_ALLOY, null,
-                new ItemStack(Material.GLOWSTONE_DUST), Items.ADVANCED_ALLOY, null,
-                Items.CARBON_PLATE, SlimefunItems.POWER_CRYSTAL, Items.CARBON_PLATE
+                new ItemStack(Material.GLOWSTONE_DUST), Items.ADVANCED_ALLOY.clone(), null,
+                new ItemStack(Material.GLOWSTONE_DUST), Items.ADVANCED_ALLOY.clone(), null,
+                Items.CARBON_PLATE.clone(), SlimefunItems.POWER_CRYSTAL, Items.CARBON_PLATE.clone()
             }
         );
     }
