@@ -16,8 +16,8 @@ public class Generator extends CoalGenerator {
 
     public Generator() {
         super(Items.LITEXPANSION, Items.GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            null, Items.RE_BATTERY, null,
-            null, Items.MACHINE_BLOCK, null,
+            null, Items.RE_BATTERY.item(), null,
+            null, Items.MACHINE_BLOCK.item(), null,
             null, new ItemStack(Material.FURNACE), null
         });
     }

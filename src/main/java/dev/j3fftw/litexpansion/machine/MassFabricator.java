@@ -44,15 +44,15 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final CustomItemStack progressItem = new CustomItemStack(Items.UU_MATTER.getType(), "&7Progress");
+    private static final ItemStack progressItem = CustomItemStack.create(Items.UU_MATTER.getType(), "&7Progress");
 
-    private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE;
-    private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD;
+    private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE.item();
+    private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD.item();
 
     public MassFabricator() {
         super(Items.LITEXPANSION, Items.MASS_FABRICATOR_MACHINE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
             plate, circuitBoard, plate,
-            circuitBoard, Items.MACHINE_BLOCK, circuitBoard,
+            circuitBoard, Items.MACHINE_BLOCK.item(), circuitBoard,
             plate, circuitBoard, plate
         });
         setupInv();
@@ -141,7 +141,7 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.clone());
+                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.item());
             }
             progress.remove(pos);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);

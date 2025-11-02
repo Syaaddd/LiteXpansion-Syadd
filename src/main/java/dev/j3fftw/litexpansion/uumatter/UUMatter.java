@@ -109,7 +109,7 @@ public final class UUMatter {
             System.arraycopy(line.toCharArray(), 0, chars, 0, 3);
             for (char c : chars) {
                 if (c == 'x') {
-                    recipe[i++] = Items.UU_MATTER.clone();
+                    recipe[i++] = Items.UU_MATTER.item();
                 } else {
                     recipe[i++] = null;
                 }
@@ -118,7 +118,7 @@ public final class UUMatter {
     }
 
     public void addUuMatterRecipe(@Nonnull SlimefunItemStack item, int amount, @Nonnull ItemStack[] recipe) {
-        final ItemStack clone = item.clone();
+        final ItemStack clone = item.item();
         clone.setAmount(amount);
         this.addUuMatterRecipe(clone, recipe);
     }

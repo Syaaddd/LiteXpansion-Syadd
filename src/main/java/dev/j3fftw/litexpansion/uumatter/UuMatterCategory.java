@@ -30,7 +30,7 @@ public final class UuMatterCategory extends FlexItemGroup {
 
     private UuMatterCategory() {
         super(new NamespacedKey(LiteXpansion.getInstance(), "uumatter_category"),
-            new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+            CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
                 "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
                 "&5UU-Matter Recipes")
         );
@@ -51,8 +51,8 @@ public final class UuMatterCategory extends FlexItemGroup {
             // Header and back button
             for (int i = 0; i < 9; i++) {
                 if (i == 1) {
-                    menu.addItem(i, new CustomItemStack(ChestMenuUtils.getBackButton(p, "",
-                        ChatColor.GRAY + Slimefun.getLocalization().getMessage(p, "guide.back.guide")))
+                    menu.addItem(i, ChestMenuUtils.getBackButton(p, "",
+                            ChatColor.GRAY + Slimefun.getLocalization().getMessage(p, "guide.back.guide"))
                     );
                     menu.addMenuClickHandler(i, (pl, s, is, action) -> {
                         open(p, profile, mode);
@@ -96,7 +96,7 @@ public final class UuMatterCategory extends FlexItemGroup {
     private boolean onIngredientClick(PlayerProfile profile, ItemStack clickedItem) {
         if (clickedItem != null) {
             // This must be UU Matter then.
-            SlimefunGuide.displayItem(profile, Items.UU_MATTER, true);
+            SlimefunGuide.displayItem(profile, Items.UU_MATTER.item(), true);
         }
 
         return false;
@@ -120,12 +120,12 @@ public final class UuMatterCategory extends FlexItemGroup {
 
         menu.setEmptySlotsClickable(false);
 
-        menu.addItem(1, new CustomItemStack(ChestMenuUtils.getBackButton(player, "",
-                ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide"))),
-            (pl, slot, item, action) -> {
-                SlimefunGuide.openMainMenu(playerProfile, slimefunGuideLayout, 1);
-                return false;
-            }
+        menu.addItem(1, ChestMenuUtils.getBackButton(player, "",
+                        ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide")),
+                (pl, slot, item, action) -> {
+                    SlimefunGuide.openMainMenu(playerProfile, slimefunGuideLayout, 1);
+                    return false;
+                }
         );
 
         // Other items

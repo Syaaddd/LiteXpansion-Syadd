@@ -34,9 +34,9 @@ public class GlassCutter extends SimpleSlimefunItem<ItemUseHandler> implements L
 
     public GlassCutter() {
         super(Items.LITEXPANSION, Items.GLASS_CUTTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            Items.REFINED_IRON.clone(), Items.REFINED_IRON.clone(), Items.REFINED_IRON.clone(),
-            new ItemStack(Material.SHEARS), Items.ADVANCED_CIRCUIT.clone(), new ItemStack(Material.SHEARS),
-            null, Items.CARBON_PLATE.clone(), null
+            Items.REFINED_IRON.item(), Items.REFINED_IRON.item(), Items.REFINED_IRON.item(),
+            new ItemStack(Material.SHEARS), Items.ADVANCED_CIRCUIT.item(), new ItemStack(Material.SHEARS),
+            null, Items.CARBON_PLATE.item(), null
         });
 
         Bukkit.getPluginManager().registerEvents(this, LiteXpansion.getInstance());

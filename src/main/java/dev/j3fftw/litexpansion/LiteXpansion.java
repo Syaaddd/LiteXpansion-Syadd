@@ -131,97 +131,97 @@ public class LiteXpansion extends JavaPlugin implements SlimefunAddon {
     private void setupResearches() {
         new Research(new NamespacedKey(this, "sanitizing_foots"),
                 696969, "Sanitizing  foots since 2k10", 45)
-                .addItems(Items.FOOD_SYNTHESIZER)
+                .addItems(Items.FOOD_SYNTHESIZER.item())
                 .register();
 
         new Research(new NamespacedKey(this, "superalloys"),
                 696970, "Superalloys", 35)
-                .addItems(Items.THORIUM, Items.MAG_THOR, Items.IRIDIUM, Items.ADVANCED_ALLOY, Items.MIXED_METAL_INGOT,
-                        Items.REFINED_IRON)
+                .addItems(Items.THORIUM.item(), Items.MAG_THOR.item(), Items.IRIDIUM.item(), Items.ADVANCED_ALLOY.item(), Items.MIXED_METAL_INGOT.item(),
+                        Items.REFINED_IRON.item())
                 .register();
 
         new Research(new NamespacedKey(this, "super_hot_fire"),
                 696971, "Super Hot Fire", 31)
-                .addItems(Items.NANO_BLADE, Items.ELECTRIC_CHESTPLATE)
+                .addItems(Items.NANO_BLADE.item(), Items.ELECTRIC_CHESTPLATE.item())
                 .register();
 
         new Research(new NamespacedKey(this, "machinereee"),
                 696972, "Machinereeeeee", 30)
-                .addItems(Items.METAL_FORGE, Items.REFINED_SMELTERY, Items.RUBBER_SYNTHESIZER_MACHINE, Items.MANUAL_MILL,
-                        Items.GENERATOR)
+                .addItems(Items.METAL_FORGE.item(), Items.REFINED_SMELTERY.item(), Items.RUBBER_SYNTHESIZER_MACHINE.item(), Items.MANUAL_MILL.item(),
+                        Items.GENERATOR.item())
                 .register();
 
         new Research(new NamespacedKey(this, "the_better_panel"),
                 696973, "These are the better panels", 45)
-                .addItems(Items.ADVANCED_SOLAR_PANEL, Items.ULTIMATE_SOLAR_PANEL, Items.HYBRID_SOLAR_PANEL)
+                .addItems(Items.ADVANCED_SOLAR_PANEL.item(), Items.ULTIMATE_SOLAR_PANEL.item(), Items.HYBRID_SOLAR_PANEL.item())
                 .register();
 
         new Research(new NamespacedKey(this, "does_this_even_matter"),
                 696974, "Does this even matter", 150)
-                .addItems(Items.UU_MATTER, Items.SCRAP, Items.MASS_FABRICATOR_MACHINE, Items.RECYCLER)
+                .addItems(Items.UU_MATTER.item(), Items.SCRAP.item(), Items.MASS_FABRICATOR_MACHINE.item(), Items.RECYCLER.item())
                 .register();
 
         new Research(new NamespacedKey(this, "what_a_configuration"),
                 696975, "What a configuration", 39)
-                .addItems(Items.CARGO_CONFIGURATOR)
+                .addItems(Items.CARGO_CONFIGURATOR.item())
                 .register();
 
         new Research(new NamespacedKey(this, "platings"),
                 696976, "Platings", 40)
-                .addItems(Items.IRIDIUM_PLATE, Items.COPPER_PLATE, Items.TIN_PLATE, Items.DIAMOND_PLATE, Items.IRON_PLATE,
-                        Items.GOLD_PLATE, Items.THORIUM_PLATE)
+                .addItems(Items.IRIDIUM_PLATE.item(), Items.COPPER_PLATE.item(), Items.TIN_PLATE.item(), Items.DIAMOND_PLATE.item(), Items.IRON_PLATE.item(),
+                        Items.GOLD_PLATE.item(), Items.THORIUM_PLATE.item())
                 .register();
 
         new Research(new NamespacedKey(this, "rubber"),
                 696977, "Rubber", 25)
-                .addItems(Items.RUBBER)
+                .addItems(Items.RUBBER.item())
                 .register();
 
         new Research(new NamespacedKey(this, "circuits"),
                 696978, "Circuits", 25)
-                .addItems(Items.ELECTRONIC_CIRCUIT, Items.ADVANCED_CIRCUIT)
+                .addItems(Items.ELECTRONIC_CIRCUIT.item(), Items.ADVANCED_CIRCUIT.item())
                 .register();
 
         new Research(new NamespacedKey(this, "reinforcement_is_coming"),
                 696979, "Reinforcement is coming", 15)
-                .addItems(Items.REINFORCED_DOOR, Items.REINFORCED_GLASS, Items.REINFORCED_STONE)
+                .addItems(Items.REINFORCED_DOOR.item(), Items.REINFORCED_GLASS.item(), Items.REINFORCED_STONE.item())
                 .register();
 
         new Research(new NamespacedKey(this, "only_glass"),
                 696980, "Only glass", 40)
-                .addItems(Items.GLASS_CUTTER)
+                .addItems(Items.GLASS_CUTTER.item())
                 .register();
 
         new Research(new NamespacedKey(this, "machine_blocks"),
                 696981, "Machine Blocks", 35)
-                .addItems(Items.MACHINE_BLOCK, Items.ADVANCED_MACHINE_BLOCK)
+                .addItems(Items.MACHINE_BLOCK.item(), Items.ADVANCED_MACHINE_BLOCK.item())
                 .register();
 
         new Research(new NamespacedKey(this, "coal_mesh"),
                 696982, "Coal mesh", 30)
-                .addItems(Items.COAL_DUST, Items.RAW_CARBON_MESH, Items.RAW_CARBON_FIBRE, Items.CARBON_PLATE)
+                .addItems(Items.COAL_DUST.item(), Items.RAW_CARBON_MESH.item(), Items.RAW_CARBON_FIBRE.item(), Items.CARBON_PLATE.item())
                 .register();
 
         new Research(new NamespacedKey(this, "what_are_these_cables"),
                 696983, "What are these cables", 25)
-                .addItems(Items.UNINSULATED_COPPER_CABLE, Items.COPPER_CABLE,
-                        Items.UNINSULATED_COPPER_CABLE, Items.TIN_CABLE)
+                .addItems(Items.UNINSULATED_COPPER_CABLE.item(), Items.COPPER_CABLE.item(),
+                        Items.UNINSULATED_COPPER_CABLE.item(), Items.TIN_CABLE.item())
                 .register();
 
         new Research(new NamespacedKey(this, "triple_a"),
                 696984, "Triple a", 20)
-                .addItems(Items.RE_BATTERY)
+                .addItems(Items.RE_BATTERY.item())
                 .register();
 
         new Research(new NamespacedKey(this, "casing"),
                 696985, "S 340", 20)
-                .addItems(Items.TIN_ITEM_CASING, Items.COPPER_ITEM_CASING)
+                .addItems(Items.TIN_ITEM_CASING.item(), Items.COPPER_ITEM_CASING.item())
                 .register();
 
         new Research(new NamespacedKey(this, "solar_helmets"),
                 696986, "More solar helmets", 30)
-                .addItems(Items.HYBRID_SOLAR_HELMET, Items.ADVANCED_SOLAR_HELMET, Items.ADVANCEDLX_SOLAR_HELMET,
-                        Items.CARBONADO_SOLAR_HELMET, Items.ENERGIZED_SOLAR_HELMET, Items.ULTIMATE_SOLAR_HELMET)
+                .addItems(Items.HYBRID_SOLAR_HELMET.item(), Items.ADVANCED_SOLAR_HELMET.item(), Items.ADVANCEDLX_SOLAR_HELMET.item(),
+                        Items.CARBONADO_SOLAR_HELMET.item(), Items.ENERGIZED_SOLAR_HELMET.item(), Items.ULTIMATE_SOLAR_HELMET.item())
                 .register();
     }
 

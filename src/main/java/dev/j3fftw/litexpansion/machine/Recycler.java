@@ -45,13 +45,13 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final CustomItemStack progressItem = new CustomItemStack(Material.DEAD_BUSH, "&7Progress");
+    private static final ItemStack progressItem = CustomItemStack.create(Material.DEAD_BUSH, "&7Progress");
 
     public Recycler() {
         super(Items.LITEXPANSION, Items.RECYCLER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.REINFORCED_PLATE, SlimefunItems.ADVANCED_CIRCUIT_BOARD,
-            SlimefunItems.REINFORCED_PLATE, Items.MACHINE_BLOCK, SlimefunItems.REINFORCED_PLATE,
-            SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.REINFORCED_PLATE, SlimefunItems.ADVANCED_CIRCUIT_BOARD
+            SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(),
+            SlimefunItems.REINFORCED_PLATE.item(), Items.MACHINE_BLOCK.item(), SlimefunItems.REINFORCED_PLATE.item(),
+            SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item()
         });
         setupInv();
         this.addItemHandler(
@@ -74,7 +74,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
                 blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
             Utils.putOutputSlot(blockMenuPreset, OUTPUT_SLOT);
-            blockMenuPreset.addItem(PROGRESS_SLOT, new CustomItemStack(Material.DEAD_BUSH, "&7Progress"));
+            blockMenuPreset.addItem(PROGRESS_SLOT, CustomItemStack.create(Material.DEAD_BUSH, "&7Progress"));
             blockMenuPreset.addMenuClickHandler(PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
         });
     }
@@ -128,7 +128,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.SCRAP.clone());
+                inv.replaceExistingItem(OUTPUT_SLOT, Items.SCRAP.item());
             }
             progress.remove(pos);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);

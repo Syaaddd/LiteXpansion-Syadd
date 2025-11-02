@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 
 public class Thorium extends UnplaceableBlock implements Radioactive {
 
-    private static final ItemStack thorium = new CustomItemStack(Material.PAPER, "&fHint!",
+    private static final ItemStack thorium = CustomItemStack.create(Material.PAPER, "&fHint!",
         "&a&oMake sure to first GEO-Scan the chunk in which you are", "&a&omining to discover Thorium!");
 
     public Thorium() {

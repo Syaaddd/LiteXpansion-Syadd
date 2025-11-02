@@ -43,14 +43,14 @@ public class MiningDrill extends SimpleSlimefunItem<ItemUseHandler> implements L
     public enum Type {
 
         MINING(Items.MINING_DRILL, new ItemStack[] {
-            null, Items.IRON_PLATE, null,
-            Items.IRON_PLATE, Items.IRON_PLATE, Items.IRON_PLATE,
-            Items.IRON_PLATE, Items.POWER_UNIT, Items.IRON_PLATE
+            null, Items.IRON_PLATE.item(), null,
+            Items.IRON_PLATE.item(), Items.IRON_PLATE.item(), Items.IRON_PLATE.item(),
+            Items.IRON_PLATE.item(), Items.POWER_UNIT.item(), Items.IRON_PLATE.item()
         }),
         DIAMOND(Items.DIAMOND_DRILL, new ItemStack[] {
             null, null, null,
             null, new ItemStack(Material.DIAMOND), null,
-            new ItemStack(Material.DIAMOND), Items.MINING_DRILL, new ItemStack(Material.DIAMOND)
+            new ItemStack(Material.DIAMOND), Items.MINING_DRILL.item(), new ItemStack(Material.DIAMOND)
         });
 
         @Nonnull

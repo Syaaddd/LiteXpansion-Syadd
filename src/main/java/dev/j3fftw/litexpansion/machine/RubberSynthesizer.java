@@ -29,16 +29,20 @@ public class RubberSynthesizer extends AContainer implements RecipeDisplayItem, 
     public RubberSynthesizer() {
         super(Items.LITEXPANSION, Items.RUBBER_SYNTHESIZER_MACHINE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                SlimefunItems.REINFORCED_PLATE, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.REINFORCED_PLATE,
-                new ItemStack(Material.PISTON), Items.MACHINE_BLOCK, new ItemStack(Material.PISTON),
-                SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.FLINT_AND_STEEL), SlimefunItems.REINFORCED_PLATE
+                SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.MEDIUM_CAPACITOR.item(), SlimefunItems.REINFORCED_PLATE.item(),
+                new ItemStack(Material.PISTON), Items.MACHINE_BLOCK.item(), new ItemStack(Material.PISTON),
+                SlimefunItems.REINFORCED_PLATE.item(), new ItemStack(Material.FLINT_AND_STEEL), SlimefunItems.REINFORCED_PLATE.item()
             });
     }
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(13, new ItemStack[] {new CustomItemStack(SlimefunItems.OIL_BUCKET)},
-            new ItemStack[] {new CustomItemStack(Items.RUBBER, 8), new ItemStack(Material.BUCKET)});
+        ItemStack rubber = Items.RUBBER.getItem().getItem();
+        rubber.setAmount(8);
+
+        registerRecipe(13,
+                new ItemStack[] {SlimefunItems.OIL_BUCKET.item()},
+                new ItemStack[] {rubber, new ItemStack(Material.BUCKET)});
     }
 
     @Nonnull

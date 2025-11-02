@@ -59,7 +59,7 @@ public class ThoriumResource implements GEOResource {
     @Nonnull
     @Override
     public ItemStack getItem() {
-        return Items.THORIUM.clone();
+        return Items.THORIUM.item();
     }
 
     @Override

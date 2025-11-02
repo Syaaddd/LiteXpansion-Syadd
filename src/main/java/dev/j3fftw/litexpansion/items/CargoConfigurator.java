@@ -37,9 +37,9 @@ public class CargoConfigurator extends SimpleSlimefunItem<ItemUseHandler> implem
 
     public CargoConfigurator() {
         super(Items.LITEXPANSION, Items.CARGO_CONFIGURATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            Items.REFINED_IRON.clone(), SlimefunItems.REINFORCED_PLATE, Items.REFINED_IRON.clone(),
-            SlimefunItems.REINFORCED_PLATE, SlimefunItems.CARGO_MANAGER, SlimefunItems.REINFORCED_PLATE,
-            Items.REFINED_IRON.clone(), SlimefunItems.REINFORCED_PLATE, Items.REFINED_IRON.clone()
+            Items.REFINED_IRON.item(), SlimefunItems.REINFORCED_PLATE.item(), Items.REFINED_IRON.item(),
+            SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.CARGO_MANAGER.item(), SlimefunItems.REINFORCED_PLATE.item(),
+            Items.REFINED_IRON.item(), SlimefunItems.REINFORCED_PLATE.item(), Items.REFINED_IRON.item()
         });
 
         Bukkit.getPluginManager().registerEvents(this, LiteXpansion.getInstance());
