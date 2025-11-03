@@ -241,7 +241,9 @@ final class ItemSetup {
 
         // Refined crap
         registerNonPlaceableItem(Items.REFINED_IRON, RefinedSmeltery.RECIPE_TYPE,
-            new ItemStack(Material.IRON_INGOT)
+            null, null, null,
+            null, new ItemStack(Material.IRON_INGOT), null,
+            null, null, null
         );
 
         // Dust smelting
