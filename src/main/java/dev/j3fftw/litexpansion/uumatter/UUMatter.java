@@ -77,18 +77,21 @@ public final class UUMatter {
     private ItemStack getOutputItem(String id, int amount) {
         ItemStack output;
 
-        final Material mat = Material.getMaterial(id);
-        if (mat != null) {
-            output = new ItemStack(mat, amount);
+        // First, check if there's a Slimefun item with this ID
+        SlimefunItem item = SlimefunItem.getById(id);
+        if (item != null) {
+            output = item.getItem().clone();
+            output.setAmount(amount);
         } else {
-            SlimefunItem item = SlimefunItem.getById(id);
-            if (item == null) {
+            // If no Slimefun item exists, check if it's a vanilla material
+            Material mat = Material.getMaterial(id);
+            if (mat != null) {
+                output = new ItemStack(mat, amount);
+            } else {
                 LiteXpansion.getInstance().getLogger().log(Level.WARNING,
                     "Unable to create recipe, unknown output item: {0}", new Object[] {id});
                 return null;
             }
-            output = item.getItem().clone();
-            output.setAmount(amount);
         }
         return output;
     }
