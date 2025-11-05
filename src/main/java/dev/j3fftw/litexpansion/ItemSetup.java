@@ -368,7 +368,12 @@ final class ItemSetup {
             recipe = items;
         }
 
-        new UnplaceableBlock(Items.LITEXPANSION, item, type, recipe, new ItemStack(item.getType(), amount)).register(plugin);
+        // Create the result ItemStack with the same properties as the SlimefunItemStack
+        // but with the specified amount
+        SlimefunItemStack resultItem = item.clone();
+        resultItem.setAmount(amount);
+        
+        new UnplaceableBlock(Items.LITEXPANSION, item, type, recipe).register(plugin);
     }
 
 
