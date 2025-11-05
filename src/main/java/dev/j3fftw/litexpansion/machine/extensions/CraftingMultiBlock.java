@@ -25,6 +25,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class CraftingMultiBlock extends MultiBlockMachine {
@@ -63,7 +64,22 @@ public abstract class CraftingMultiBlock extends MultiBlockMachine {
 
             for (ItemStack[] input : inputs) {
                 if (isCraftable(inv, input)) {
-                    ItemStack output = RecipeType.getRecipeOutputList(this, input).clone();
+                    ItemStack originalOutput = RecipeType.getRecipeOutputList(this, input);
+                    // Get the proper SlimefunItem to ensure we maintain all properties
+                    SlimefunItem outputSlimefunItem = SlimefunItem.getByItem(originalOutput);
+                    ItemStack output;
+                    
+                    if (outputSlimefunItem != null) {
+                        // Use the proper SlimefunItemStack to maintain all properties
+                        output = outputSlimefunItem.getItem().clone();
+                        output.setAmount(originalOutput.getAmount()); // Preserve the original amount
+                    } else {
+                        // If it's not a Slimefun item, use fallback method to find matching item
+                        output = findMatchingSlimefunItem(originalOutput);
+                        if (output == null) {
+                            output = originalOutput.clone();
+                        }
+                    }
 
                     if (SlimefunUtils.canPlayerUseItem(p, output, true)) {
                         craft(inv, dispenser, p, b, output);
@@ -75,6 +91,25 @@ public abstract class CraftingMultiBlock extends MultiBlockMachine {
 
             Slimefun.getLocalization().sendMessage(p, "machines.pattern-not-found", true);
         }
+    }
+    
+    /**
+     * Try to find a matching Slimefun item by material type if the original detection failed
+     */
+    private ItemStack findMatchingSlimefunItem(ItemStack originalOutput) {
+        if (originalOutput == null) return null;
+        
+        // Look through all LiteXpansion items to see if any matches the material
+        for (SlimefunItem item : Slimefun.getRegistry().getAllSlimefunItems()) {
+            if (item.getAddon() != null && 
+                item.getAddon().getName().equals("LiteXpansion") &&
+                originalOutput.getType() == item.getItem().getType()) {
+                // Check if the name matches as an additional check
+                return item.getItem().clone();
+            }
+        }
+        
+        return null;
     }
 
     private void craft(Inventory inv, Block dispenser, Player p, Block b, ItemStack output) {

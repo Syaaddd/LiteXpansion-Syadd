@@ -34,7 +34,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
@@ -303,6 +306,56 @@ public class Events implements Listener {
                     e.setFoodLevel(20);
                 }
                 break;
+            }
+        }
+    }
+
+    /**
+     * Handles InventoryClickEvent to ensure crafted LiteXpansion items maintain their Slimefun properties
+     * when taken from the Enhanced Crafting Table.
+     *
+     * @param e is the InventoryClickEvent that is triggered when an item is clicked in an inventory
+     */
+    @EventHandler
+    public void onEnhancedCraftingTableTakeResult(InventoryClickEvent e) {
+        if (e.getClickedInventory() == null || e.getView().getTitle() == null) {
+            return;
+        }
+
+        // Check if this is a Slimefun Enhanced Crafting Table - titles can vary slightly
+        String title = e.getView().getTitle();
+        if (title.contains("Enhanced Crafting") || title.contains("enhanced crafting") || 
+            title.contains("Slimefun")) {
+            // The result slot in Enhanced Crafting Table is typically slot 0
+            if (e.getSlot() == 0 && e.getClick() == ClickType.LEFT) {
+                ItemStack clickedItem = e.getCurrentItem();
+                if (clickedItem != null) {
+                    // Check if the item should be a LiteXpansion Slimefun item
+                    // by checking if it's a vanilla version of a known LiteXpansion item
+                    SlimefunItem slimefunItem = null;
+                    
+                    // Look through all LiteXpansion items to see if this vanilla item matches one
+                    for (SlimefunItem item : Slimefun.getRegistry().getAllSlimefunItems()) {
+                        if (item.getAddon() != null && 
+                            item.getAddon().getName().equals("LiteXpansion") &&
+                            clickedItem.getType() == item.getItem().getType()) {
+                            
+                            // This checks if the item in the result slot matches a LiteXpansion recipe output
+                            // by comparing the material type. If they match and it's not a Slimefun item yet,
+                            // it means it was converted to a vanilla item.
+                            SlimefunItem originalByItem = SlimefunItem.getByItem(clickedItem);
+                            if (originalByItem == null || !originalByItem.getId().equals(item.getId())) {
+                                slimefunItem = item;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (slimefunItem != null) {
+                        // Replace the vanilla item with the proper Slimefun item to maintain its properties
+                        e.setCurrentItem(slimefunItem.getItem().clone());
+                    }
+                }
             }
         }
     }

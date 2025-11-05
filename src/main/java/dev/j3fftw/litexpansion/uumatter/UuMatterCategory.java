@@ -30,9 +30,9 @@ public final class UuMatterCategory extends FlexItemGroup {
 
     private UuMatterCategory() {
         super(new NamespacedKey(LiteXpansion.getInstance(), "uumatter_category"),
-            CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
-                "&5UU-Matter Recipes")
+                CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+                                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
+                        "&5UU-Matter Recipes")
         );
     }
 
@@ -82,7 +82,7 @@ public final class UuMatterCategory extends FlexItemGroup {
     @ParametersAreNonnullByDefault
     private void displayItem(ChestMenu menu, Player p, PlayerProfile profile, ItemStack output, ItemStack[] recipe) {
         final ChestMenu.MenuClickHandler clickHandler = (pl, s, clickedItem, a) -> onIngredientClick(profile,
-            clickedItem);
+                clickedItem);
 
         for (int i = 0; i < 9; ++i) {
             menu.addItem(recipeSlots[i], recipe[i], clickHandler);

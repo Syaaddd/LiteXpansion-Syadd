@@ -112,7 +112,20 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
                     if (recipeStack == null) amount--;
                 }
 
-                ItemStack output = entry.getKey().clone();
+                ItemStack originalOutput = entry.getKey();
+                // Get the proper SlimefunItem to ensure we maintain all properties
+                SlimefunItem outputSlimefunItem = SlimefunItem.getByItem(originalOutput);
+                ItemStack output;
+                
+                if (outputSlimefunItem != null) {
+                    // Use the proper SlimefunItemStack to maintain all properties
+                    output = outputSlimefunItem.getItem().clone();
+                    output.setAmount(originalOutput.getAmount()); // Preserve the original amount
+                } else {
+                    // If it's not a Slimefun item, use as is
+                    output = originalOutput.clone();
+                }
+
                 final ItemStack input = blockMenu.getItemInSlot(INPUT_SLOT);
                 SlimefunItem slimefunItem = SlimefunItem.getByItem(input);
 
