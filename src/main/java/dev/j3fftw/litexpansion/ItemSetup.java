@@ -63,42 +63,6 @@ final class ItemSetup {
         registerCarbonStuff();
         registerSolarPanels();
         registerSolarHelmets();
-
-        categorizeGuideTypes();
-    }
-
-    // Assign guide categories the heuristic would otherwise miss (machines/tools/armor are auto-typed).
-    private void categorizeGuideTypes() {
-        String[] energyTech = {
-            "UNINSULATED_TIN_CABLE", "TIN_CABLE",
-            "UNINSULATED_COPPER_CABLE", "COPPER_CABLE",
-            "UNINSULATED_GOLD_CABLE", "GOLD_CABLE",
-            "RE_BATTERY", "LAPOTRON_CRYSTAL", "POWER_UNIT",
-            "MULTI_FUNCTIONAL_ELECTRIC_STORAGE_UNIT", "MULTI_FUNCTIONAL_STORAGE_UNIT"
-        };
-        String[] resources = {
-            "TIN_PLATE", "COPPER_PLATE", "GOLD_PLATE", "IRON_PLATE",
-            "DIAMOND_PLATE", "THORIUM_PLATE", "CARBON_PLATE", "IRIDIUM_PLATE",
-            "TIN_ITEM_CASING", "COPPER_ITEM_CASING", "GOLD_ITEM_CASING", "IRON_ITEM_CASING",
-            "MAG_THOR", "THORIUM", "IRIDIUM", "REFINED_IRON", "MIXED_METAL_INGOT", "ADVANCED_ALLOY",
-            "SCRAP", "UU_MATTER", "RUBBER",
-            "COAL_DUST", "RAW_CARBON_FIBRE", "RAW_CARBON_MESH",
-            "THORIUM_DUST", "LAPIS_DUST", "REDSTONE_DUST", "DIAMOND_DUST",
-            "EMERALD_DUST", "QUARTZ_DUST", "ANCIENT_DEBRIS_DUST",
-            "ELECTRONIC_CIRCUIT", "ADVANCED_CIRCUIT"
-        };
-
-        setGuideType(energyTech, "energy_tech");
-        setGuideType(resources, "resources");
-    }
-
-    private void setGuideType(@Nonnull String[] ids, @Nonnull String type) {
-        for (String id : ids) {
-            SlimefunItem item = SlimefunItem.getById(id);
-            if (item != null) {
-                item.setGuideType(type);
-            }
-        }
     }
 
     private void registerTools() {
