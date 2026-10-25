@@ -52,7 +52,15 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
         MaterialCompat.safe(XMaterial.RED_STAINED_GLASS_PANE), ChatColor.GRAY + "Click to start"
     );
 
-    protected static final Map<Location, Boolean> whatIsRunning = new HashMap<>();
+    // [MEMORY + BUG] Dahulu HashMap biasa tanpa pembersihan. 3 masalah sekaligus:
+    // 1) BlockTicker mesin ini isSynchronized() == false, jadi tick berjalan di thread async dan
+    //    membaca map ini; HashMap yang diakses sambil ditulis thread lain bisa rusak (resize) atau
+    //    berputar tanpa henti. ConcurrentHashMap menghilangkan risiko itu.
+    // 2) Entri tidak pernah dibuang saat mesin dibongkar -> kunci Location menumpuk seumur session.
+    //    Sekarang dibersihkan di onPlayerBreak di bawah.
+    // 3) Pembacaan memakai auto-unboxing (whatIsRunning.get(loc)) -> NullPointerException kalau
+    //    mesin di-tick sebelum onNewInstance mengisi map (terjadi setelah reload / chunk unload).
+    protected static final Map<Location, Boolean> whatIsRunning = new java.util.concurrent.ConcurrentHashMap<>();
 
     public UUCrafter() {
         super(Items.LITEXPANSION, Items.UU_CRAFTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -66,6 +74,9 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
                 @Override
                 public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
                     BlockMenu blockMenu = BlockStorage.getInventory(event.getBlock());
+                    // [MEMORY] Buang status running mesin ini, tidak ada gunanya disimpan terus
+                    // setelah bloknya hilang (kunci Location menahan dunia/chunk di heap).
+                    whatIsRunning.remove(event.getBlock().getLocation());
                     if (blockMenu != null) {
                         blockMenu.dropItems(blockMenu.getLocation(), INPUT_SLOT, OUTPUT_SLOT);
                         blockMenu.dropItems(blockMenu.getLocation(), CRAFTING_SLOTS);
@@ -99,7 +110,16 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
             return;
         }
 
-        if (!whatIsRunning.get(location)) {
+        Boolean running = whatIsRunning.get(location);
+        if (running == null) {
+            // [BUG] Sebelumnya baris ini auto-unboxing dari Map.get() -> NPE kalau mesin di-tick
+            // sebelum onNewInstance mengisi map (setelah reload / chunk unload), dan tick async
+            // membuat crash ini muncul tanpa pola. Ambil nilai yang tersimpan di BlockStorage,
+            // persis seperti yang dilakukan onNewInstance, lalu catat.
+            running = Boolean.parseBoolean(BlockStorage.getLocationInfo(location, "RUNNING"));
+            whatIsRunning.put(location, running);
+        }
+        if (!running) {
             return;
         }
 
@@ -158,7 +178,9 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
     }
 
     public void toggleRunning(BlockMenu blockMenu, Block block) {
-        boolean setTo = !whatIsRunning.get(block.getLocation());
+        // [BUG] getOrDefault, bukan unboxing langsung: tombol START/STOP harus tetap berfungsi
+        // walaupun mesin ini belum pernah tercatat di map (baru di-toggle sebelum tick pertama).
+        boolean setTo = !whatIsRunning.getOrDefault(block.getLocation(), false);
         BlockStorage.addBlockInfo(block, "RUNNING", String.valueOf(setTo));
         whatIsRunning.put(block.getLocation(), setTo);
         ItemStack itemStack = setTo ? RUNNING : NOT_RUNNING;
