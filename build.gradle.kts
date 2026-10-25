@@ -7,7 +7,7 @@ plugins {
 group = "dev.j3fftw"
 description = "LiteXpansion is a Slimefun addon inspired by Industrial Craft 2."
 
-apply(from = "https://raw.githubusercontent.com/Slimefun5/gradle/stable/slimefun-addon.gradle")
+apply(from = "https://raw.githubusercontent.com/Slimefun5/gradle/main/slimefun-addon.gradle")
 
 dependencies {
     githubImplementation("Slimefun5:SlimefunMetrics:v1.0.0")
